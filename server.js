@@ -40,6 +40,10 @@ app.use(
   })
 );
 
+app.get("/", (req, res) => {
+  res.render("index.ejs");
+});
+
 const PORT = process.env.PORT || 8000;
 
 // Run server

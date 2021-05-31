@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server",
-    "build:css": "postcss public/css/tailwind.css -o public/css/style.css"
+    "build:dev": "nodemon server & NODE_ENV=development postcss public/css/tailwind.css -o public/css/style.css -w",
+    "build:prod": "NODE_ENV=production postcss public/css/tailwind.css -o public/css/style.css"
   },
   "author": "Reginald Traywick",
   "license": "ISC",
@@ -23,9 +24,11 @@
     "nodemon": "^2.0.7",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
+    "postcss-cli": "^8.3.1",
     "validator": "^13.6.0"
   },
   "devDependencies": {
+    "@tailwindcss/jit": "^0.1.18",
     "autoprefixer": "^10.2.6",
     "postcss": "^8.3.0",
     "tailwindcss": "^2.1.2"
