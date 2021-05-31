@@ -8,11 +8,14 @@ const flash = require("express-flash");
 const logger = require("morgan");
 const connectDB = require("./config/db");
 
+// Bring in the routes
+const mainRoutes = require("./routes/main");
+
 // Use the .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
 
 // Passport
-//require("./config/passport")(passport);
+require("./config/passport")(passport);
 
 // Connect to database
 connectDB();
@@ -40,9 +43,15 @@ app.use(
   })
 );
 
-app.get("/", (req, res) => {
-  res.render("index.ejs");
-});
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Use flash for errors
+app.use(flash());
+
+// Call Routes
+app.use("/", mainRoutes);
 
 const PORT = process.env.PORT || 8000;
 
