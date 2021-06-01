@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head'); %>
+  </head>
+  <body class="container font-Poppins bg-gray-300">
+    <div class="min-h-screen flex items-center justify-center flex-col">
+      <div class="px-8">
+        <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => {
+        %>
+        <div
+          class="
+            bg-red-200
+            border border-red-600
+            text-red-900
+            px-4
+            py-3
+            mb-4
+            rounded
+            relative
+          "
+          role="alert"
+        >
+          <%= el.msg %>
+        </div>
+        <% }) %> <% } %> <% if (locals.messages.info) { %> <%
+        messages.info.forEach( el => { %>
+        <div
+          class="
+            bg-blue-300
+            border border-blue-600
+            text-blue-800
+            px-4
+            py-3
+            rounded
+            relative
+          "
+          role="alert"
+        >
+          <%= el.msg %>
+        </div>
+        <% }) %> <% } %>
+        <form action="/login" method="POST">
+          <div>
+            <label for="email" class="block text-md font-medium text-gray-700"
+              >Email Address</label
+            >
+            <div class="mt-1">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+                class="
+                  w-full
+                  rounded-lg
+                  shadow-sm
+                  focus:border-red-600
+                  focus:ring-red-600
+                "
+              />
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <label
+              for="password"
+              class="block text-md text-gray-700 font-medium"
+              >Password</label
+            >
+            <div class="mt-1">
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                required
+                class="
+                  w-full
+                  rounded-lg
+                  shadow-sm
+                  focus:border-red-600
+                  focus:ring-red-600
+                "
+              />
+            </div>
+          </div>
+          <button
+            type="submit"
+            class="
+              w-full
+              block
+              mt-6
+              text-lg
+              hover:bg-red-500
+              bg-red-700
+              text-white
+              rounded-lg
+              shadow-sm
+              text-center
+              py-3
+              mx-auto
+              uppercase
+            "
+          >
+            Login
+          </button>
+            <a
+              href="/signup"
+              class="
+                text-gray-800
+                inline-block
+                font-semibold
+                hover:text-gray-600
+                text-lg
+                pt-4
+              "
+              >Don't have an account? <span class="underline">Signup</span></a
+            ></span
+          >
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

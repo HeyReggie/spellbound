@@ -9,7 +9,7 @@ const logger = require("morgan");
 const connectDB = require("./config/db");
 
 // Bring in the routes
-const mainRoutes = require("./routes/main");
+const mainRoutes = require("./routes/main.js");
 
 // Use the .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
